@@ -20,7 +20,7 @@ def iniciar(diretorio_perfil,v): #programa pezinho
             perfil = aux_perfil
             arquivos = listdir(diretorio_perfil+'/Temp')#(RAIZ+'/Temp')
             if len(arquivos) == 0:
-                sleep(5)
+                sleep(2)
             else:
                 if '.tiff' not in str(arquivos):
                     arquivos = listdir(diretorio_perfil+'/Temp')
