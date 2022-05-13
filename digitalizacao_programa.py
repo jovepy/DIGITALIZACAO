@@ -57,7 +57,7 @@ def iniciar(diretorio_perfil,v): #programa pezinho
                                 
                             
                             
-                            inserir_ficha_db([matricula,livro,folha]) #computa para sabermos se há duplicidade                            
+                            inserir_ficha_db([matricula,livro,folha,usuario]) #computa para sabermos se há duplicidade                            
                             
                             transforma_tiffa4(diretorio_perfil, ficha='{}.tiff'.format(matricula)) #antes arquivo quandoa4 era a 1 a formar
                             

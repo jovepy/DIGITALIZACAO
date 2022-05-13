@@ -270,12 +270,12 @@ def inserir_ficha_db(valores=list):
         for valor in valores: #INSERIR NA TABELA DAS GUIAS PARA ABASTECER SELO
             sql = sql+"'"+str(valor)+"',"
         
-        cur.execute("insert into python.fichas(matricula, livro, folha) values ({})".format(sql[:-1]))
+        cur.execute("insert into python.fichas(matricula, livro, folha, usuario) values ({})".format(sql[:-1]))
         conn.commit()
     except:
         try:
             cur.execute("ROLLBACK")    
-            cur.execute("insert into python.fichas(matricula, livro, folha) values ({})".format(sql[:-1]))
+            cur.execute("insert into python.fichas(matricula, livro, folha, usuario) values ({})".format(sql[:-1]))
         except:
             pyautogui.alert(text='PROBLEMA NO BANCO DE DADOS - fichas',title='ERRO')
             
