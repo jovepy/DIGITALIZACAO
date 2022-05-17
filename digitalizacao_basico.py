@@ -368,7 +368,7 @@ def principal(diretorio_perfil,arquivo=str,n=int,matricula=str,livro=str,folha=s
             if duplicada == True:
                 pyautogui.alert(text='ENCERRE A MATRÍCULA E REIMPRIMA A FICHA',title='MATRÍCULA REPETIDA!')
                 remove(diretorio_perfil+'/Temp/{}.tiff'.format(matricula))
-                programa_travado.destroy() #erro será o gatilho para não passar daqui caso a ficha esteja duplicada
+                digi.destroy() #erro será o gatilho para não passar daqui caso a ficha esteja duplicada
                 
             else:
                 pass
@@ -377,10 +377,10 @@ def principal(diretorio_perfil,arquivo=str,n=int,matricula=str,livro=str,folha=s
         pasta = encontra_pasta(matricula=matricula)
         
         unir_tiffs(diretorio_perfil,matricula=matricula)
-
-        encerrar = pyautogui.confirm(text='digitalização n.º {} realizada.'.format(n), title='N.º DE DIGITALIZAÇÕES', buttons=['Continuar','Encerrar'])        
         remove(diretorio_perfil+'/Temp/{}.tiff'.format(matricula)) #exclui, pois os tiff unidos nao modifica o temporario
         n+=1
+        encerrar = pyautogui.confirm(text='digitalização n.º {} realizada.'.format(n), title='N.º DE DIGITALIZAÇÕES', buttons=['Continuar','Encerrar'])        
+        
         
     except Exception as e:        
         encerrar = 'Encerrar'
