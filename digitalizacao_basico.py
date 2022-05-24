@@ -262,7 +262,7 @@ def ler_matricula_ficha(usuario,caminho=str):
     del(image)
     return(matricula)
 
-valores = ['9999999999999','sn','sn']
+
 def inserir_ficha_db(valores=list):
     try:
         sql = ''
@@ -368,6 +368,7 @@ def principal(diretorio_perfil,arquivo=str,n=int,matricula=str,livro=str,folha=s
             if duplicada == True:
                 pyautogui.alert(text='ENCERRE A MATRÍCULA E REIMPRIMA A FICHA',title='MATRÍCULA REPETIDA!')
                 remove(diretorio_perfil+'/Temp/{}.tiff'.format(matricula))
+                sleep(1)
                 digi.destroy() #erro será o gatilho para não passar daqui caso a ficha esteja duplicada
                 
             else:
@@ -377,6 +378,7 @@ def principal(diretorio_perfil,arquivo=str,n=int,matricula=str,livro=str,folha=s
         pasta = encontra_pasta(matricula=matricula)
         
         unir_tiffs(diretorio_perfil,matricula=matricula)
+        sleep(1)
         remove(diretorio_perfil+'/Temp/{}.tiff'.format(matricula)) #exclui, pois os tiff unidos nao modifica o temporario
         n+=1
         encerrar = pyautogui.confirm(text='digitalização n.º {} realizada.'.format(n), title='N.º DE DIGITALIZAÇÕES', buttons=['Continuar','Encerrar'])        
