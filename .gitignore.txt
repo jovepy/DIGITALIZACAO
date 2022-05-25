@@ -1,3 +1,0 @@
-/perfis
-/__pycache__
-/digitalizacao_config.py
