@@ -57,7 +57,7 @@ def iniciar(diretorio_perfil,v): #programa pezinho
                                 
                             
                             
-                            inserir_ficha_db([matricula,livro,folha,usuario]) #computa para sabermos se há duplicidade                            
+                            inserir_ficha_db([matricula,livro,folha,usuario,date.today().strftime('%d/%m/%Y'),perfil]) #computa para sabermos se há duplicidade                            
                             
                             transforma_tiffa4(diretorio_perfil, ficha='{}.tiff'.format(matricula)) #antes arquivo quandoa4 era a 1 a formar
                             
@@ -85,7 +85,6 @@ def iniciar(diretorio_perfil,v): #programa pezinho
         
 def logar():
     """
-    Usado para utilizar o programa sob credenciais de acesso da SmartBrain
     app: janela de credencial
     hofa: janela do menu principal
     LOGIN e SENHA: credenciais retornadas dos campos de entrada

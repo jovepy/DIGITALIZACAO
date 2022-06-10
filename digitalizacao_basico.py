@@ -270,12 +270,12 @@ def inserir_ficha_db(valores=list):
         for valor in valores: #INSERIR NA TABELA DAS GUIAS PARA ABASTECER SELO
             sql = sql+"'"+str(valor)+"',"
         
-        cur.execute("insert into python.fichas(matricula, livro, folha, usuario) values ({})".format(sql[:-1]))
+        cur.execute("insert into python.fichas(matricula, livro, folha, usuario, data_hoje,perfil) values ({})".format(sql[:-1]))
         conn.commit()
     except:
         try:
             cur.execute("ROLLBACK")    
-            cur.execute("insert into python.fichas(matricula, livro, folha, usuario) values ({})".format(sql[:-1]))
+            cur.execute("insert into python.fichas(matricula, livro, folha, usuario, data_hoje,perfil) values ({})".format(sql[:-1]))
         except:
             pyautogui.alert(text='PROBLEMA NO BANCO DE DADOS - fichas',title='ERRO')
             
@@ -362,7 +362,8 @@ def confirma_livro_folha(livro=str,folha=str):
     return(livro,folha)
 
 def principal(diretorio_perfil,arquivo=str,n=int,matricula=str,livro=str,folha=str):
-    try:        
+    try:
+        
         if int(matricula) <= 47350: #se a matricula possuir livro e folha
             duplicada = consultar_ficha_duplicidade_db(matricula=matricula)
             if duplicada == True:
@@ -386,7 +387,8 @@ def principal(diretorio_perfil,arquivo=str,n=int,matricula=str,livro=str,folha=s
         
     except Exception as e:        
         encerrar = 'Encerrar'
-        messagebox.showerror('Erro',e)
+        remove(diretorio_perfil+'/Temp/{}.tiff'.format(matricula))
+        messagebox.showerror('Erro, confira a pasta temp e M',e)
     
     
     
